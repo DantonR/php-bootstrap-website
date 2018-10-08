@@ -1,5 +1,7 @@
 <?php
     $page = "features";
+    $desc = "This is the description of the Features Page";
+
     // include("templates/header.php");
     require("templates/header.php");
  ?>

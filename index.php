@@ -11,7 +11,7 @@
 
     // include("templates/header.php");
     $page = "home";
-    $desc = "";
+    $desc = "This is the description of the Home Page";
     require("templates/header.php");
  ?>
 
