@@ -32,19 +32,19 @@
             array_push($errors, "Your message needs to be less than 1000 characters");
         }
 
-        if(empty($errors)){
-            $to = $email;
-            $subject = 'email enquiry';
-            $emailMessage = 'You have recieved an email<br>Here is the message<br>';
-            $emailMessage += $message;
-            $headers = array(
-                'From' => 'richard.hpa@acgedu.com',
-                'Reply-To' => 'richard.hpa@acgedu.com',
-                'X-Mailer' => 'PHP/'.phpversion()
-            );
-            mail($to,$subject,$emailMessage,$headers);
-            header("Location: index.php");
-        }
+        // if(empty($errors)){
+        //     $to = $email;
+        //     $subject = 'email enquiry';
+        //     $emailMessage = 'You have recieved an email<br>Here is the message<br>';
+        //     $emailMessage += $message;
+        //     $headers = array(
+        //         'From' => 'danton.ruthe@gmail.com',
+        //         'Reply-To' => 'danton.ruthe@gmail.com',
+        //         'X-Mailer' => 'PHP/'.phpversion()
+        //     );
+        //     mail($to,$subject,$emailMessage,$headers);
+        //     header("Location: index.php");
+        // }
 
     }
 
@@ -57,6 +57,7 @@
 
     $page = "contact";
     $desc = "This is the description of the Contact Page";
+
 
     // include("templates/header.php");
     require("templates/header.php");
@@ -79,7 +80,7 @@
     <form method="post" action="contact.php" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter Name" value="<?php if(isset($_POST['name'])){ echo $_POST['name']; } ?>">
+            <input type="text" class="form-control" name="name" placeholder="Enter Name" id="inputField" onKeyUp="testFunc()" value="<?php if(isset($_POST['name'])){ echo $_POST['name']; } ?>">
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
@@ -93,10 +94,13 @@
           <input type="checkbox" class="form-check-input" id="subscribe" name="subsribe" <?php if(isset($_POST['subsribe'])){ echo 'checked'; } ?>>
           <label class="form-check-label" for="subscribe">Subscribe to Newsletter</label>
         </div>
-        <button type="submit" class="btn btn-outline-light btn-block">Submit</button>
+        <button type="submit" class="btn btn-outline-light btn-block" id="submitBtn">Submit</button>
     </form>
 
 
 </main>
 
-<?php require("templates/footer.php"); ?>
+<?php 
+    $script = "js/contact-script.js";
+    require("templates/footer.php"); 
+?>
